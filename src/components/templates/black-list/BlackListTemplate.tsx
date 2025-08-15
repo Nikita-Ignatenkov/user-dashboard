@@ -8,7 +8,7 @@ export const BlackListTemplate = () => {
   const { blackList, removeFromBlackList } = useBlackListStore();
   
   const { data: users, isLoading } = useQuery({
-    queryKey: ['blacklisted-users', blackList], // Добавляем blackList в ключ запроса
+    queryKey: ['blacklisted-users', blackList], 
     queryFn: async () => {
       if (blackList.length === 0) return [];
       
@@ -22,8 +22,6 @@ export const BlackListTemplate = () => {
 
   const handleRemove = (id: number) => {
     removeFromBlackList(id);
-    // Не нужно явно вызывать refetch - изменение blackList через store
-    // автоматически обновит запрос благодаря изменению queryKey
   };
 
   return (

@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-// Базовый URL API (DummyJSON)
 export const API_URL = 'https://dummyjson.com';
 
-// Создаём экземпляр axios
 export const axiosInstance = axios.create({
   baseURL: API_URL,
   headers: {
@@ -11,7 +9,6 @@ export const axiosInstance = axios.create({
   },
 });
 
-// Добавляем интерцепторы (можно пока только для логирования)
 axiosInstance.interceptors.request.use(
   (config) => {
     console.log('Запрос отправлен:', config.url);

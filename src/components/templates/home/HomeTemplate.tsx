@@ -40,10 +40,8 @@ export const HomeTemplate = () => {
     
     <div className="space-y-3">
       {isLoading ? (
-        // Показываем 5 скелетонов при первой загрузке
         [...Array(5)].map((_, i) => <UserSkeleton key={`skeleton-${i}`} />)
       ) : (
-        // Отображаем реальные данные
         data?.pages.map((page) =>
           page.users.map((user) => (
             <UserCard key={user.id} user={user} />
