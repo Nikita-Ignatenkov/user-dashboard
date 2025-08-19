@@ -25,6 +25,9 @@ if (!rootElement) {
   throw new Error('Не найден элемент #root для монтирования приложения')
 }
 
+// В данном случае ничего страшного, что обернул в provider здесь, 
+// но лучше создать отделю папку providers, в которой будет корневой файл Provider.tsx, 
+// в котором и будут содержатсться все провайдеры приложения
 createRoot(rootElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>

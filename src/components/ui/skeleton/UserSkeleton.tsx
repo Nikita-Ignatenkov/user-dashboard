@@ -1,3 +1,7 @@
+
+// Неверно вынесена логки. В ui у тебя должен был быть универсальный компонент Skeleton (кирпичик)
+// А всё остальное, например Skeleton страницы с пользователями должен был лежать во вкладке pages рядом со страницами
+
 export const UserSkeleton = () => {
   return (
     <div className="border rounded-lg p-4 animate-pulse mb-3 last:mb-0">
