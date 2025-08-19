@@ -1,6 +1,11 @@
 import { buttonVariants } from './button.interface';
 
+// Не хватает перфикса I
+// интерфейс доожен был дить в button.interface.ts
 interface ButtonProps {
+  // никода нельзя прокуидывать children в props. 
+  // Лучше унаследуй interface от ButtonHTMLAttributes<HTMLButtonElement> - 
+  // в нем уже содержится children, а также другие полезные свойства кнопок, например, onClick?: () => void или disabled?: boolean; 
   children: React.ReactNode;
   variant?: keyof typeof buttonVariants;
   size?: 'sm' | 'md' | 'lg';

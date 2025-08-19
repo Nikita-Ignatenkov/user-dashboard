@@ -1,12 +1,14 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
+// Не хватает префикса I в названии интерфайса
 interface BlackListState {
   blackList: number[];
   addToBlackList: (id: number) => void;
   removeFromBlackList: (id: number) => void;
 }
 
+// Можешь ещё почитать про то, что такое persist и попробовать его здесь применить
 export const useBlackListStore = create<BlackListState>()(
   persist(
     (set) => ({

@@ -5,6 +5,7 @@ import { UserPage } from './pages/user/UserPage';
 import { BlackListPage } from './pages/black-list/BlackListPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
+// ErrorBoundary лучше вынести в ./src/components/layout/error. 
 const ErrorBoundary = () => {
   return (
     <div>
