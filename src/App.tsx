@@ -3,16 +3,9 @@ import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/home/HomePage';
 import { UserPage } from './pages/user/UserPage';
 import { BlackListPage } from './pages/black-list/BlackListPage';
-import { NotFoundPage } from './pages/NotFoundPage';
+// import { NotFoundPage } from './pages/NotFoundPage';
+import { ErrorBoundary } from './components/layout/error';
 
-const ErrorBoundary = () => {
-  return (
-    <div>
-      <h1>Произошла ошибка</h1>
-      <p>Пожалуйста, попробуйте позже.</p>
-    </div>
-  );
-};
 
 const router = createBrowserRouter([
   {
@@ -38,8 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '*',
-        element: <NotFoundPage />,
-        errorElement: <ErrorBoundary />,
+        element: <ErrorBoundary />,
       },
     ],
   },

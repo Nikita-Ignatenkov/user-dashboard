@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-interface BlackListState {
+interface IBlackListState {
   blackList: number[];
   addToBlackList: (id: number) => void;
   removeFromBlackList: (id: number) => void;
 }
 
-export const useBlackListStore = create<BlackListState>()(
+export const useBlackListStore = create<IBlackListState>()(
   persist(
     (set) => ({
       blackList: [],
@@ -19,7 +19,7 @@ export const useBlackListStore = create<BlackListState>()(
         })),
     }),
     {
-      name: 'black-list-storage', // Ключ для localStorage
+      name: 'black-list-storage',
     }
   )
 );

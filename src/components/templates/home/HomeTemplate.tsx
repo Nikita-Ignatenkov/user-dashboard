@@ -1,8 +1,8 @@
-import { useUsers } from '../../../queries/user.queries';
+import { UserQueries } from '../../../queries/user.queries';
 import { UserCard } from '../../../components/elements/user-card/UserCard';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
-import { UserSkeleton } from '../../../components/ui/skeleton/UserSkeleton'
+import { HomeSkeleton } from '../../../pages/home/HomeSkeleton';
 
 export const HomeTemplate = () => {
   const { ref, inView } = useInView({
@@ -18,7 +18,7 @@ export const HomeTemplate = () => {
     fetchNextPage, 
     hasNextPage,
     isFetchingNextPage
-  } = useUsers();
+  } = UserQueries.useList();
 
   useEffect(() => {
     if (inView && hasNextPage && !isFetchingNextPage) {
@@ -40,7 +40,7 @@ export const HomeTemplate = () => {
     
     <div className="space-y-3">
       {isLoading ? (
-        [...Array(5)].map((_, i) => <UserSkeleton key={`skeleton-${i}`} />)
+        [...Array(5)].map((_, i) => <HomeSkeleton key={`skeleton-${i}`} />)
       ) : (
         data?.pages.map((page) =>
           page.users.map((user) => (
@@ -53,7 +53,7 @@ export const HomeTemplate = () => {
     {/* Индикатор загрузки при подгрузке */}
     <div ref={ref} className="h-10 mt-4">
       {isFetchingNextPage && [...Array(3)].map((_, i) => (
-        <UserSkeleton key={`fetching-${i}`} />
+        <HomeSkeleton key={`fetching-${i}`} />
       ))}
       {!hasNextPage && !isLoading && (
         <p className="text-center text-gray-500">Все пользователи загружены</p>

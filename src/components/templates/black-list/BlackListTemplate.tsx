@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { UserService } from '../../../services/user.service';
 import { useBlackListStore } from '../../../stores/black-list';
 import { Link } from 'react-router-dom';
-import { UserSkeleton } from '../../ui/skeleton/UserSkeleton';
+import { BlackListSkeleton } from '../../../pages/black-list/BlackListSkeleton';
 
 export const BlackListTemplate = () => {
   const { blackList, removeFromBlackList } = useBlackListStore();
@@ -13,7 +13,7 @@ export const BlackListTemplate = () => {
       if (blackList.length === 0) return [];
       
       const requests = blackList.map((id) =>
-        UserService.getUserById(id).catch(() => null)
+        UserService.retrieve(id).catch(() => null)
       );
       const results = await Promise.all(requests);
       return results.filter((user) => user !== null);
@@ -31,7 +31,7 @@ export const BlackListTemplate = () => {
       {isLoading ? (
         <div className="space-y-3">
           {[...Array(3)].map((_, i) => (
-            <UserSkeleton key={i} />
+            <BlackListSkeleton key={i} />
           ))}
         </div>
       ) : users && users.length > 0 ? (

@@ -1,10 +1,10 @@
 import { useParams } from 'react-router-dom';
-import { useUserById } from '../../../queries/user.queries';
-import { UserProfileSkeleton } from '../../../components/ui/skeleton/UserSkeleton';
+import { UserQueries } from '../../../queries/user.queries';
+import { UserProfileSkeleton } from '../../../pages/user/UserProfileSkeleton';
 
 export const UserTamplate = () => {
   const { id } = useParams();
-  const { data: user, isLoading, isError } = useUserById(Number(id));
+  const { data: user, isLoading, isError } = UserQueries.useRetrieve(Number(id));
 
   if (isLoading) {
     return <UserProfileSkeleton />;

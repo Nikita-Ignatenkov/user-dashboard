@@ -1,21 +1,12 @@
 import { buttonVariants } from './button.interface';
-
-interface ButtonProps {
-  children: React.ReactNode;
-  variant?: keyof typeof buttonVariants;
-  size?: 'sm' | 'md' | 'lg';
-  onClick?: () => void;
-  disabled?: boolean;
-  className?: string;
-}
+import type { IButtonProps } from './button.interface';
 
 export const Button = ({
-  children,
   variant = 'default',
   size = 'md',
   className = '',
   ...props
-}: ButtonProps) => {
+}: IButtonProps) => {
   const baseClasses = 'rounded transition-colors font-medium';
   const sizeClasses = {
     sm: 'px-2 py-1 text-xs',
@@ -28,7 +19,7 @@ export const Button = ({
       className={`${baseClasses} ${buttonVariants[variant]} ${sizeClasses[size]} ${className}`}
       {...props}
     >
-      {children}
+      {props.children}
     </button>
   );
 };

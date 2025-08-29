@@ -1,19 +1,17 @@
 import { axiosInstance } from '../api/root.interceptor';
 import type { IUser, IUsersResponse } from '../types/user.types';
+import type { IPagination } from '../types/root.types';
 
-export const UserService = {
-  async getAllUsers(skip = 0, limit = 20): Promise<IUsersResponse> {
-    const response = await axiosInstance.get(
-      `/users?limit=${limit}&skip=${skip}&select=firstName,lastName,id`
-    );
-    return response.data;
-  },
+export class UserService {
+  private static readonly BASE_URL = '/users';
 
-  async getUserById(id: number): Promise<IUser> {
-    const response = await axiosInstance.get(
-      `/users/${id}?select=firstName,lastName,age,gender,address`
-    );
-    return response.data;
+  static async list(params?: Partial<Pick<IPagination, 'skip' | 'limit'>>) {
+    const response = await axiosInstance.get(this.BASE_URL, { params });
+    return response.data as IUsersResponse;
   }
-};
-   
+
+  static async retrieve(id: number) {
+    const response = await axiosInstance.get(`${this.BASE_URL}/${id}`);
+    return response.data as IUser;
+  }
+  }

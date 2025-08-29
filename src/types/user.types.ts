@@ -1,3 +1,5 @@
+import type { IPagination } from './root.types';
+
 export interface IUser {
   id: number;
   firstName: string;
@@ -10,9 +12,6 @@ export interface IUser {
   };
 }
 
-export interface IUsersResponse {
+export interface IUsersResponse extends IPagination {
   users: IUser[];
-  total: number;
-  skip: number;
-  limit: number;
 }

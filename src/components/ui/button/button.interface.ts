@@ -4,3 +4,8 @@ export const buttonVariants = {
   danger: 'bg-red-600 text-white hover:bg-red-700',
   disabled: 'bg-gray-400 text-white cursor-not-allowed',
 } as const;
+
+export interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: keyof typeof buttonVariants;
+  size?: 'sm' | 'md' | 'lg';
+}
