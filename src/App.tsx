@@ -3,7 +3,6 @@ import { Layout } from './components/layout/Layout';
 import { HomePage } from './pages/home/HomePage';
 import { UserPage } from './pages/user/UserPage';
 import { BlackListPage } from './pages/black-list/BlackListPage';
-// import { NotFoundPage } from './pages/NotFoundPage';
 import { ErrorBoundary } from './components/layout/error';
 
 
